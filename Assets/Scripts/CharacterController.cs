@@ -8,7 +8,7 @@ public class BasicEntityCharacter : MonoBehaviour
     private int maxHp;
     private int hp;
     private int zoneID;
-    private bool isDead;
+    public bool isDead;
     private bool alienForm;
     private int range;
     private int atk;
