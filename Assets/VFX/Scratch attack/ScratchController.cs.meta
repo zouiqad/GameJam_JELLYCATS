@@ -3,7 +3,10 @@ guid: 5d707f84ecf0ad147be8a2a1595a4ee0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - clawScratchVFX: {fileID: 1789900593155859760, guid: 9101a88e2d05e9c418d6f70e4c501a3e,
+      type: 3}
+  - clawScratchSFX: {fileID: 8300000, guid: 19538b940f41c2e4baeb1ee6f030b04a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

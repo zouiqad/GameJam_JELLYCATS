@@ -6,14 +6,11 @@ public class ScratchController : MonoBehaviour
 {
     public GameObject clawScratchVFX;
     public AudioClip clawScratchSFX;
-    public float delay = 1f;
+    public float delay = 0f;
 
-    private void Start()
-    {
-        StartCoroutine(PlayClawScratch());
-    }
 
-    IEnumerator PlayClawScratch()
+
+    public IEnumerator PlayClawScratch()
     {
         Debug.Log("Coroutine started"); // Add debug log
         
@@ -26,10 +23,11 @@ public class ScratchController : MonoBehaviour
         // Wait for a short duration
         yield return new WaitForSeconds(delay);
 
-        Debug.Log("Sound effect played"); // Add debug log
         
         // Play the sound effect
         AudioSource.PlayClipAtPoint(clawScratchSFX, transform.position);
+
+        Debug.Log("Sound effect played"); // Add debug log
 
         // Wait for the duration of the sound effect to finish playing
         yield return new WaitForSeconds(clawScratchSFX.length);

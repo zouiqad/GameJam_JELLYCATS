@@ -7,11 +7,9 @@ using UnityEngine.UIElements;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    
 
+    [SerializeField, Range(0.1f, 1.0f)] private float rotationSpeeed = 0.1f;
     [SerializeField] private float moveSpeed = 10.0f;
-    [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField, Range(0, 1.0f)] private float rotationSpeeed = 0.1f;
 
     private GameObject catModel;
 
@@ -36,21 +34,12 @@ public class PlayerMovementController : MonoBehaviour
 
         if(moveDirection != Vector3.zero)
         {
-            Rotate(moveDirection, rotationSpeeed);
-
-        }
-
-        if(Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f)
-        {
+            Rotate(catModel, moveDirection, rotationSpeeed);
             Move();
 
         }
-        Debug.Log(moveDirection);
-
 
     }
-
-
 
 
     private void Move()
@@ -58,10 +47,10 @@ public class PlayerMovementController : MonoBehaviour
         transform.position += catModel.transform.forward * Time.deltaTime * moveSpeed;
     }
 
-    private void Rotate(Vector3 moveDirection, float rotationSpeeed)
+    public static void Rotate(GameObject catModel, Vector3 targetPosition, float rotationSpeeed)
     {
         Quaternion rotationFrom = catModel.transform.rotation;
-        Quaternion rotationTo = Quaternion.LookRotation(moveDirection.normalized, Vector3.up);
+        Quaternion rotationTo = Quaternion.LookRotation(targetPosition.normalized, Vector3.up);
 
 
         catModel.transform.rotation = Quaternion.Slerp(rotationFrom, rotationTo, rotationSpeeed);
